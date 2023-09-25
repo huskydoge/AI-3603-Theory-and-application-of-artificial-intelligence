@@ -44,3 +44,5 @@ https://www.cnblogs.com/ttweixiao-IT-program/p/14374270.html
 
 ### Reference
 https://zhuanlan.zhihu.com/p/144815425
+* [Hybrid A* Algorithm](https://zhuanlan.zhihu.com/p/593406203)
+* [自动驾驶运动规划-Hybird A*算法](https://zhuanlan.zhihu.com/p/139489196)
