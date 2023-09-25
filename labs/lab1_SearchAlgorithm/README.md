@@ -1,6 +1,10 @@
 # My Completion Process
 
 
+## KinoDynamic
+![image](https://github.com/huskydoge/AI-3603-Theory-and-application-of-artificial-intelligence/assets/91367324/f93b07dc-b97e-4319-9c71-d489e4e901c7)
+
+
 ## [Reed-Shepp Expansion](https://zhuanlan.zhihu.com/p/122544884)
 
 ## Voronoi ﬁeld
@@ -39,8 +43,8 @@ vor = Voronoi(points)
 fig = voronoi_plot_2d(vor)
 plt.show()
 ```
-https://www.cnblogs.com/ttweixiao-IT-program/p/14374270.html
-
+* https://www.cnblogs.com/ttweixiao-IT-program/p/14374270.html
+* [带边框的voronoi图求解](https://blog.csdn.net/weixin_50098648/article/details/125473652)
 
 ### Reference
 https://zhuanlan.zhihu.com/p/144815425
