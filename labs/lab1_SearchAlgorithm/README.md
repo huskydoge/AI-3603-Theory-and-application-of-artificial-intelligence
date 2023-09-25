@@ -2,8 +2,11 @@
 
 
 ## KinoDynamic
+<div align="center">
+
 ![image](https://github.com/huskydoge/AI-3603-Theory-and-application-of-artificial-intelligence/assets/91367324/f93b07dc-b97e-4319-9c71-d489e4e901c7)
 
+</div>
 
 ## [Reed-Shepp Expansion](https://zhuanlan.zhihu.com/p/122544884)
 
