@@ -24,6 +24,22 @@ $$
 \end{aligned}
 $$
 
+### Code
+
+```python
+from scipy.spatial import Voronoi, voronoi_plot_2d
+import numpy as np
+import matplotlib.pyplot as plt
+
+points = np.array([[0, 0], [0, 1], [0, 2], [1, 0], [1, 1], [1, 2],
+                   [2, 0], [2, 1], [2, 2]])
+# 计算指定点的泰森多边形
+vor = Voronoi(points)
+# 绘制泰森多边形二维图像
+fig = voronoi_plot_2d(vor)
+plt.show()
+```
+
 
 ### Reference
 https://zhuanlan.zhihu.com/p/144815425
