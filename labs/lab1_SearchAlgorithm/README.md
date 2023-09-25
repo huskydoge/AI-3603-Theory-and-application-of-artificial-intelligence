@@ -39,6 +39,7 @@ vor = Voronoi(points)
 fig = voronoi_plot_2d(vor)
 plt.show()
 ```
+https://www.cnblogs.com/ttweixiao-IT-program/p/14374270.html
 
 
 ### Reference
