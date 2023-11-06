@@ -22,3 +22,14 @@ SJTU-AI-3603-Theory and application of artificial intelligence，2023 Fall
 
 
 
+## DQN
+
+<div align="center">
+  <img width="30%" src="https://github.com/huskydoge/AI-3603-Theory-and-application-of-artificial-intelligence/assets/91367324/57484ecb-4bd1-4e5d-8be3-98a0ff88370e" />
+  <img width="30%" src="https://github.com/huskydoge/AI-3603-Theory-and-application-of-artificial-intelligence/assets/91367324/f7f98987-70f5-4793-93b0-86f69a92bbec" />
+  <img width="30%" src="https://github.com/huskydoge/AI-3603-Theory-and-application-of-artificial-intelligence/assets/91367324/f8694e43-31fd-49dd-95e7-1f42132b4217" />
+</div>
+
+
+
+
