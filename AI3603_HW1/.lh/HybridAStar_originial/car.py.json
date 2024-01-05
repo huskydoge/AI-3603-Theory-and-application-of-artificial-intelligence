@@ -1,0 +1,22 @@
+{
+    "sourceFile": "HybridAStar_originial/car.py",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1695693738569,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1695693753986,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n \n import matplotlib.pyplot as plt\n import numpy as np\n \n-from ..utils.angle import rot_mat_2d\n+from utils.angle import rot_mat_2d\n \n WB = 3.0  # rear to front wheel\n W = 2.0  # width of car\n LF = 3.3  # distance from rear to vehicle front end\n"
+                }
+            ],
+            "date": 1695693738569,
+            "name": "Commit-0",
+            "content": "\"\"\"\n\nCar model for Hybrid A* path planning\n\nauthor: Zheng Zh (@Zhengzh)\n\n\"\"\"\n\nimport sys\nimport pathlib\nroot_dir = pathlib.Path(__file__).parent.parent.parent\nsys.path.append(str(root_dir))\n\nfrom math import cos, sin, tan, pi\n\nimport matplotlib.pyplot as plt\nimport numpy as np\n\nfrom ..utils.angle import rot_mat_2d\n\nWB = 3.0  # rear to front wheel\nW = 2.0  # width of car\nLF = 3.3  # distance from rear to vehicle front end\nLB = 1.0  # distance from rear to vehicle back end\nMAX_STEER = pi/5  # [rad] maximum steering angle\n\nBUBBLE_DIST = (LF - LB) / 2.0  # distance from rear to center of vehicle.\nBUBBLE_R = np.hypot((LF + LB) / 2.0, W / 2.0)  # bubble radius\n\n# vehicle rectangle vertices\nVRX = [LF, LF, -LB, -LB, LF]\nVRY = [W / 2, -W / 2, -W / 2, W / 2, W / 2]\n\n\ndef check_car_collision(x_list, y_list, yaw_list, ox, oy, kd_tree):\n    for i_x, i_y, i_yaw in zip(x_list, y_list, yaw_list):\n        cx = i_x + BUBBLE_DIST * cos(i_yaw)\n        cy = i_y + BUBBLE_DIST * sin(i_yaw)\n\n        ids = kd_tree.query_ball_point([cx, cy], BUBBLE_R)\n\n        if not ids:\n            continue\n\n        if not rectangle_check(i_x, i_y, i_yaw,\n                               [ox[i] for i in ids], [oy[i] for i in ids]):\n            return False  # collision\n\n    return True  # no collision\n\n\ndef rectangle_check(x, y, yaw, ox, oy):\n    # transform obstacles to base link frame\n    rot = rot_mat_2d(yaw)\n    for iox, ioy in zip(ox, oy):\n        tx = iox - x\n        ty = ioy - y\n        converted_xy = np.stack([tx, ty]).T @ rot\n        rx, ry = converted_xy[0], converted_xy[1]\n\n        if not (rx > LF or rx < -LB or ry > W / 2.0 or ry < -W / 2.0):\n            return False  # no collision\n\n    return True  # collision\n\n\ndef plot_arrow(x, y, yaw, length=1.0, width=0.5, fc=\"r\", ec=\"k\"):\n    \"\"\"Plot arrow.\"\"\"\n    if not isinstance(x, float):\n        for (i_x, i_y, i_yaw) in zip(x, y, yaw):\n            plot_arrow(i_x, i_y, i_yaw)\n    else:\n        plt.arrow(x, y, length * cos(yaw), length * sin(yaw),\n                  fc=fc, ec=ec, head_width=width, head_length=width, alpha=0.4)\n\n\ndef plot_car(x, y, yaw):\n    car_color = '-k'\n    c, s = cos(yaw), sin(yaw)\n    rot = rot_mat_2d(-yaw)\n    car_outline_x, car_outline_y = [], []\n    for rx, ry in zip(VRX, VRY):\n        converted_xy = np.stack([rx, ry]).T @ rot\n        car_outline_x.append(converted_xy[0]+x)\n        car_outline_y.append(converted_xy[1]+y)\n\n    arrow_x, arrow_y, arrow_yaw = c * 1.5 + x, s * 1.5 + y, yaw\n    plot_arrow(arrow_x, arrow_y, arrow_yaw)\n\n    plt.plot(car_outline_x, car_outline_y, car_color)\n\n\ndef pi_2_pi(angle):\n    return (angle + pi) % (2 * pi) - pi\n\n\ndef move(x, y, yaw, distance, steer, L=WB):\n    x += distance * cos(yaw)\n    y += distance * sin(yaw)\n    yaw += pi_2_pi(distance * tan(steer) / L)  # distance/2\n    # yaw += pi_2_pi(steer) \n\n    return x, y, yaw\n\n\ndef main():\n    x, y, yaw = 0., 0., 1.\n    plt.axis('equal')\n    plot_car(x, y, yaw)\n    plt.show()\n\n\nif __name__ == '__main__':\n    main()\n"
+        }
+    ]
+}

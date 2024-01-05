@@ -1,0 +1,18 @@
+{
+    "sourceFile": "5-Task_1.py",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1695038502572,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1695038502571,
+            "name": "Commit-0",
+            "content": "import sys\nimport os\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nMAP_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), '3-map/map.npy')\n\n### START CODE HERE ###\n# This code block is optional. You can define your utility function and class in this block if necessary.\n\n\n###  END CODE HERE  ###\n\n\ndef A_star(world_map, start_pos, goal_pos):\n    \"\"\"\n    Given map of the world, start position of the robot and the position of the goal, \n    plan a path from start position to the goal using A* algorithm.\n\n    Arguments:\n    world_map -- A 120*120 array indicating map, where 0 indicating traversable and 1 indicating obstacles.\n    start_pos -- A 2D vector indicating the start position of the robot.\n    goal_pos -- A 2D vector indicating the position of the goal.\n\n    Return:\n    path -- A N*2 array representing the planned path by A* algorithm.\n    \"\"\"\n\n    ### START CODE HERE ###\n  \n\n  \n\n    ###  END CODE HERE  ###\n    return path\n\n\n\n\n\nif __name__ == '__main__':\n\n    # Get the map of the world representing in a 120*120 array, where 0 indicating traversable and 1 indicating obstacles.\n    map = np.load(MAP_PATH)\n\n    # Define goal position of the exploration\n    goal_pos = [100, 100]\n\n    # Define start position of the robot.\n    start_pos = [10, 10]\n\n    # Plan a path based on map from start position of the robot to the goal.\n    path = A_star(map, start_pos, goal_pos)\n\n    # Visualize the map and path.\n    obstacles_x, obstacles_y = [], []\n    for i in range(120):\n        for j in range(120):\n            if map[i][j] == 1:\n                obstacles_x.append(i)\n                obstacles_y.append(j)\n\n    path_x, path_y = [], []\n    for path_node in path:\n        path_x.append(path_node[0])\n        path_y.append(path_node[1])\n\n    plt.plot(path_x, path_y, \"-r\")\n    plt.plot(start_pos[0], start_pos[1], \"xr\")\n    plt.plot(goal_pos[0], goal_pos[1], \"xb\")\n    plt.plot(obstacles_x, obstacles_y, \".k\")\n    plt.grid(True)\n    plt.axis(\"equal\")\n    plt.show()\n\n    \n  \n"
+        }
+    ]
+}
